@@ -1,0 +1,24 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import { site } from "../data/site";
+---
+
+<BaseLayout current="home">
+  <section class="hero">
+    <div class="container">
+      <p class="hero-eyebrow">{site.name}</p>
+      <h1>{site.tagline}</h1>
+      <p class="hero-lead">{site.description}</p>
+      <div class="hero-cta">
+        <a class="btn" href="#contact">Get in touch</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="contact-placeholder" id="contact">
+    <div class="container">
+      <h2>Contact</h2>
+      <p>Contact details will be added when the site is ready.</p>
+    </div>
+  </section>
+</BaseLayout>

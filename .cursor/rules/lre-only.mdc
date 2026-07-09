@@ -1,0 +1,23 @@
+---
+description: LRE project scope — keep separate from BBNCS and Fly LRE
+alwaysApply: true
+---
+
+# LRE only (not BBNCS or Fly LRE)
+
+This workspace is **LRE** — an independent project. Do not mix it with BBNCS or Fly LRE.
+
+| | LRE (this project) | BBNCS (separate) | Fly LRE (separate) |
+|---|---|---|---|
+| Folder | `C:\Users\Adi\Projects\LRE` | `C:\Users\Adi\Projects\BBNCS` | `C:\Users\Adi\Projects\FLYLRE` |
+| Live site | TBD | https://bbncs.com | https://www.flylre.com |
+| GitHub | https://github.com/adinahsohn-BBNCS/LRE | https://github.com/adinahsohn-BBNCS/BBNCS | https://github.com/adinahsohn-BBNCS/FLYLRE |
+| Dev port | 4323 | 4322 | 4321 |
+| Deploy | `npm run deploy` → own hosting | `npm run deploy` → bbncs.com FTPS | `npm run deploy` → flylre.com SFTP |
+
+## Rules
+
+- Use **this repo's** `.env.deploy`, scripts, and credentials only — never BBNCS's or Fly LRE's.
+- Never copy deploy config, env files, or site copy between projects unless the user explicitly asks.
+- `npm run deploy` updates **LRE production only** — not GitHub. Offer commit/push after major work; only commit when the user asks.
+- Never commit `.env`, `.env.deploy`, or personal files.

@@ -1,0 +1,64 @@
+---
+import "../styles/global.css";
+import { navLinks, site } from "../data/site";
+
+interface Props {
+  title?: string;
+  description?: string;
+  current?: (typeof navLinks)[number]["key"];
+}
+
+const {
+  title = site.name,
+  description = site.description,
+  current,
+} = Astro.props;
+
+const fullTitle = title === site.name ? site.name : `${title} · ${site.name}`;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content={description} />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <title>{fullTitle}</title>
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+
+    <header class="site-header">
+      <div class="header-inner">
+        <a class="site-logo" href="/">{site.name}</a>
+        <nav aria-label="Main">
+          <ul class="site-nav">
+            {
+              navLinks.map((link) => (
+                <li>
+                  <a
+                    href={link.href}
+                    aria-current={current === link.key ? "page" : undefined}
+                  >
+                    {link.label}
+                  </a>
+                </li>
+              ))
+            }
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+    <main id="main">
+      <slot />
+    </main>
+
+    <footer class="site-footer">
+      <div class="container">
+        <p>&copy; {new Date().getFullYear()} {site.name}</p>
+      </div>
+    </footer>
+  </body>
+</html>
